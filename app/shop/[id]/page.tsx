@@ -5,14 +5,16 @@ import { Footer } from "@/components/footer"
 import Image from "next/image"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Heart, Share2, Minus, Plus, MessageCircle, Truck, RefreshCw, Shield } from "lucide-react"
+import { Heart, Share2, Minus, Plus, MessageCircle, Truck, RefreshCw, Shield, ShoppingBag, Check } from "lucide-react"
 import Link from "next/link"
+import { useCart } from "@/contexts/cart-context"
 
 // Sample product data - in production, this would come from a database
 const product = {
   id: 1,
   name: "Pearl Initial Bracelet",
   price: "Rs. 1,500",
+  priceNumber: 1500,
   description:
     "A beautiful handcrafted bracelet featuring genuine freshwater pearls with your choice of gold-plated initial charm. Perfect for everyday elegance or as a meaningful gift.",
   details: [
@@ -23,7 +25,7 @@ const product = {
     "Hypoallergenic materials",
   ],
   images: [
-    "/placeholder.svg?height=600&width=600",
+    "/pearl-bracelet-with-gold-initial-charm-elegant.jpg",
     "/placeholder.svg?height=600&width=600",
     "/placeholder.svg?height=600&width=600",
     "/placeholder.svg?height=600&width=600",
@@ -34,18 +36,56 @@ const product = {
 }
 
 const relatedProducts = [
-  { id: 2, name: "Moon Charm Anklet", price: "Rs. 1,200", image: "/silver-moon-charm-anklet-delicate-feminine.jpg" },
-  { id: 3, name: "Custom Name Necklace", price: "Rs. 2,500", image: "/gold-custom-name-necklace-elegant-script.jpg" },
-  { id: 4, name: "Minimalist Gold Ring", price: "Rs. 1,800", image: "/minimalist-gold-stacking-ring-elegant.jpg" },
+  {
+    id: 2,
+    name: "Moon Charm Anklet",
+    price: "Rs. 1,200",
+    priceNumber: 1200,
+    image: "/silver-moon-charm-anklet-delicate-feminine.jpg",
+    category: "Anklets",
+  },
+  {
+    id: 3,
+    name: "Custom Name Necklace",
+    price: "Rs. 2,500",
+    priceNumber: 2500,
+    image: "/gold-custom-name-necklace-elegant-script.jpg",
+    category: "Necklaces",
+  },
+  {
+    id: 4,
+    name: "Minimalist Gold Ring",
+    price: "Rs. 1,800",
+    priceNumber: 1800,
+    image: "/minimalist-gold-stacking-ring-elegant.jpg",
+    category: "Rings",
+  },
 ]
 
 export default function ProductPage() {
   const [selectedImage, setSelectedImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
+  const [added, setAdded] = useState(false)
+  const { addToCart } = useCart()
 
   const handleWhatsAppOrder = () => {
     const message = `Hi! I'd like to order:\n\nProduct: ${product.name}\nPrice: ${product.price}\nQuantity: ${quantity}\n\nPlease confirm availability.`
     window.open(`https://wa.me/1234567890?text=${encodeURIComponent(message)}`, "_blank")
+  }
+
+  const handleAddToCart = () => {
+    for (let i = 0; i < quantity; i++) {
+      addToCart({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        priceNumber: product.priceNumber,
+        image: product.images[0],
+        category: product.category,
+      })
+    }
+    setAdded(true)
+    setTimeout(() => setAdded(false), 1500)
   }
 
   return (
@@ -157,10 +197,24 @@ export default function ProductPage() {
 
               {/* Actions */}
               <div className="mt-8 space-y-4">
+                <Button onClick={handleAddToCart} size="lg" className="w-full rounded-none" disabled={added}>
+                  {added ? (
+                    <>
+                      <Check className="mr-2 h-5 w-5" />
+                      Added to Cart
+                    </>
+                  ) : (
+                    <>
+                      <ShoppingBag className="mr-2 h-5 w-5" />
+                      Add to Cart
+                    </>
+                  )}
+                </Button>
                 <Button
                   onClick={handleWhatsAppOrder}
                   size="lg"
-                  className="w-full rounded-none bg-[#25D366] hover:bg-[#25D366]/90 text-white"
+                  variant="outline"
+                  className="w-full rounded-none bg-[#25D366] hover:bg-[#25D366]/90 text-white border-[#25D366]"
                 >
                   <MessageCircle className="mr-2 h-5 w-5" />
                   Order via WhatsApp

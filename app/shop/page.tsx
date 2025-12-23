@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Heart, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { AddToCartButton } from "@/components/add-to-cart-button"
 
 const products = [
   {
@@ -122,31 +123,39 @@ export default function ShopPage() {
           {/* Products Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {products.map((product) => (
-              <Link key={product.id} href={`/shop/${product.id}`} className="group">
-                <div className="relative aspect-square overflow-hidden bg-muted">
-                  <Image
-                    src={product.image || "/placeholder.svg"}
-                    alt={product.name}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  {product.isNew && (
-                    <span className="absolute top-3 left-3 bg-primary text-primary-foreground text-xs px-2 py-1 uppercase tracking-wider">
-                      New
-                    </span>
-                  )}
-                  <button className="absolute top-3 right-3 p-2 bg-background/80 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background">
-                    <Heart className="h-4 w-4 text-foreground" />
-                  </button>
-                </div>
+              <div key={product.id} className="group">
+                <Link href={`/shop/${product.id}`}>
+                  <div className="relative aspect-square overflow-hidden bg-muted">
+                    <Image
+                      src={product.image || "/placeholder.svg"}
+                      alt={product.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {product.isNew && (
+                      <span className="absolute top-3 left-3 bg-primary text-primary-foreground text-xs px-2 py-1 uppercase tracking-wider">
+                        New
+                      </span>
+                    )}
+                    <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button className="p-2 bg-background/80 rounded-full hover:bg-background">
+                        <Heart className="h-4 w-4 text-foreground" />
+                      </button>
+                      <AddToCartButton product={product} variant="icon" />
+                    </div>
+                  </div>
+                </Link>
                 <div className="mt-4 text-center">
                   <p className="text-xs text-muted-foreground uppercase tracking-wider">{product.category}</p>
-                  <h3 className="mt-1 font-serif text-lg text-foreground group-hover:text-primary transition-colors">
-                    {product.name}
-                  </h3>
+                  <Link href={`/shop/${product.id}`}>
+                    <h3 className="mt-1 font-serif text-lg text-foreground group-hover:text-primary transition-colors">
+                      {product.name}
+                    </h3>
+                  </Link>
                   <p className="mt-1 text-foreground font-medium">{product.price}</p>
+                  <AddToCartButton product={product} className="mt-3 w-full text-sm" />
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
 

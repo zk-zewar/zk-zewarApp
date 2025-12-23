@@ -2,6 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter, Cormorant_Garamond } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { CartProvider } from "@/contexts/cart-context"
+import { CartDrawer } from "@/components/cart-drawer"
 import "./globals.css"
 
 const _inter = Inter({ subsets: ["latin"] })
@@ -42,7 +44,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
-        {children}
+        <CartProvider>
+          {children}
+          <CartDrawer />
+        </CartProvider>
         <Analytics />
       </body>
     </html>
