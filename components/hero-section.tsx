@@ -9,8 +9,10 @@ export function HeroSection() {
         <img
           src="/images/handcrafted-20designs-20personalized-20pieces-20shop-20now-20-281-29.png"
           alt="ZK Zewar - Timeless Elegance, Crafted for You"
-          className="h-full w-full object-cover object-center"
+          className="h-full w-full object-cover object-top sm:object-center"
         />
+        {/* Subtle overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
       </div>
 
       {/* Content - positioned at bottom for call to action */}
