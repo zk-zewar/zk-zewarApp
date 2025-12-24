@@ -2,232 +2,42 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
 import Link from "next/link"
-import { Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { notFound } from "next/navigation"
-import { AddToCartButton } from "@/components/add-to-cart-button"
+import { Clock, Bell } from "lucide-react"
 
 const categoryData: Record<
   string,
   {
     title: string
     description: string
-    products: Array<{ id: number; name: string; price: string; image: string; isNew: boolean }>
+    image: string
   }
 > = {
   rings: {
     title: "Rings",
     description: "Discover our collection of elegant rings, from minimalist bands to statement pieces.",
-    products: [
-      {
-        id: 101,
-        name: "Minimalist Gold Band",
-        price: "Rs. 1,800",
-        image: "/minimalist-gold-band-ring-elegant.jpg",
-        isNew: false,
-      },
-      {
-        id: 102,
-        name: "Pearl Statement Ring",
-        price: "Rs. 2,400",
-        image: "/pearl-statement-ring-gold-elegant.jpg",
-        isNew: true,
-      },
-      {
-        id: 103,
-        name: "Birthstone Ring",
-        price: "Rs. 2,800",
-        image: "/birthstone-gold-ring-elegant-feminine.jpg",
-        isNew: false,
-      },
-      {
-        id: 104,
-        name: "Stackable Thin Ring",
-        price: "Rs. 1,200",
-        image: "/stackable-thin-gold-ring.jpg",
-        isNew: true,
-      },
-      {
-        id: 105,
-        name: "Twisted Band Ring",
-        price: "Rs. 1,600",
-        image: "/twisted-band-gold-ring-elegant.jpg",
-        isNew: false,
-      },
-      {
-        id: 106,
-        name: "Initial Signet Ring",
-        price: "Rs. 2,200",
-        image: "/initial-signet-gold-ring.jpg",
-        isNew: false,
-      },
-    ],
+    image: "/elegant-gold-rings-collection-jewelry-display.jpg",
   },
   necklaces: {
     title: "Necklaces",
     description: "Timeless necklaces that tell your story, from delicate chains to personalized pendants.",
-    products: [
-      {
-        id: 201,
-        name: "Custom Name Necklace",
-        price: "Rs. 2,500",
-        image: "/gold-custom-name-necklace-elegant-script.jpg",
-        isNew: true,
-      },
-      {
-        id: 202,
-        name: "Layered Chain Set",
-        price: "Rs. 3,000",
-        image: "/layered-gold-chain-necklace-elegant.jpg",
-        isNew: false,
-      },
-      { id: 203, name: "Pearl Pendant", price: "Rs. 2,200", image: "/pearl-pendant-gold-necklace.jpg", isNew: true },
-      {
-        id: 204,
-        name: "Initial Charm Necklace",
-        price: "Rs. 1,800",
-        image: "/initial-charm-gold-necklace.jpg",
-        isNew: false,
-      },
-      {
-        id: 205,
-        name: "Moon Phase Necklace",
-        price: "Rs. 2,400",
-        image: "/moon-phase-gold-necklace.jpg",
-        isNew: true,
-      },
-      {
-        id: 206,
-        name: "Birthstone Pendant",
-        price: "Rs. 2,600",
-        image: "/birthstone-pendant-gold-necklace.jpg",
-        isNew: false,
-      },
-    ],
+    image: "/elegant-gold-necklaces-collection-jewelry-display.jpg",
   },
   earrings: {
     title: "Earrings",
     description: "From everyday studs to elegant drop earrings, find your perfect pair.",
-    products: [
-      {
-        id: 301,
-        name: "Pearl Stud Earrings",
-        price: "Rs. 1,600",
-        image: "/pearl-stud-earrings-classic-elegant.jpg",
-        isNew: true,
-      },
-      {
-        id: 302,
-        name: "Crystal Drop Earrings",
-        price: "Rs. 2,200",
-        image: "/crystal-drop-earrings-elegant-feminine.jpg",
-        isNew: false,
-      },
-      {
-        id: 303,
-        name: "Gold Hoop Earrings",
-        price: "Rs. 1,800",
-        image: "/gold-hoop-earrings-elegant.jpg",
-        isNew: false,
-      },
-      {
-        id: 304,
-        name: "Minimalist Bar Studs",
-        price: "Rs. 1,200",
-        image: "/minimalist-bar-stud-earrings-gold.jpg",
-        isNew: true,
-      },
-      {
-        id: 305,
-        name: "Moon Charm Earrings",
-        price: "Rs. 1,400",
-        image: "/moon-charm-earrings-gold.jpg",
-        isNew: true,
-      },
-      {
-        id: 306,
-        name: "Tassel Drop Earrings",
-        price: "Rs. 2,000",
-        image: "/tassel-drop-earrings-gold-elegant.jpg",
-        isNew: false,
-      },
-    ],
+    image: "/elegant-earrings-collection-jewelry-display-pearls.jpg",
   },
   bracelets: {
     title: "Bracelets",
     description: "Handcrafted bracelets that add elegance to your everyday style.",
-    products: [
-      {
-        id: 401,
-        name: "Pearl Initial Bracelet",
-        price: "Rs. 1,500",
-        image: "/pearl-bracelet-with-gold-initial-charm-elegant.jpg",
-        isNew: true,
-      },
-      {
-        id: 402,
-        name: "Chain Link Bracelet",
-        price: "Rs. 1,800",
-        image: "/chain-link-gold-bracelet.jpg",
-        isNew: false,
-      },
-      {
-        id: 403,
-        name: "Charm Bracelet",
-        price: "Rs. 2,200",
-        image: "/charm-bracelet-gold-elegant.jpg",
-        isNew: true,
-      },
-      { id: 404, name: "Bangle Set", price: "Rs. 2,800", image: "/gold-bangle-set-elegant.jpg", isNew: false },
-      {
-        id: 405,
-        name: "Beaded Bracelet",
-        price: "Rs. 1,200",
-        image: "/placeholder.svg?height=400&width=400",
-        isNew: false,
-      },
-      {
-        id: 406,
-        name: "Tennis Bracelet",
-        price: "Rs. 3,500",
-        image: "/placeholder.svg?height=400&width=400",
-        isNew: true,
-      },
-    ],
+    image: "/elegant-pearl-bracelets-collection-jewelry-display.jpg",
   },
   anklets: {
     title: "Anklets",
     description: "Delicate anklets perfect for summer days and beach vibes.",
-    products: [
-      {
-        id: 501,
-        name: "Moon Charm Anklet",
-        price: "Rs. 1,200",
-        image: "/silver-moon-charm-anklet-delicate-feminine.jpg",
-        isNew: true,
-      },
-      {
-        id: 502,
-        name: "Pearl Chain Anklet",
-        price: "Rs. 1,400",
-        image: "/placeholder.svg?height=400&width=400",
-        isNew: false,
-      },
-      {
-        id: 503,
-        name: "Layered Anklet Set",
-        price: "Rs. 1,800",
-        image: "/placeholder.svg?height=400&width=400",
-        isNew: true,
-      },
-      {
-        id: 504,
-        name: "Initial Anklet",
-        price: "Rs. 1,500",
-        image: "/placeholder.svg?height=400&width=400",
-        isNew: false,
-      },
-    ],
+    image: "/elegant-gold-anklets-collection-jewelry-display.jpg",
   },
 }
 
@@ -260,53 +70,47 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         </div>
       </section>
 
-      {/* Products */}
-      <section className="py-12 sm:py-16">
+      <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {data.products.map((product) => (
-              <div key={product.id} className="group">
-                <Link href={`/shop/${product.id}`}>
-                  <div className="relative aspect-square overflow-hidden bg-muted">
-                    <Image
-                      src={product.image || "/placeholder.svg"}
-                      alt={product.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    {product.isNew && (
-                      <span className="absolute top-3 left-3 bg-primary text-primary-foreground text-xs px-2 py-1 uppercase tracking-wider">
-                        New
-                      </span>
-                    )}
-                    <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <button className="p-2 bg-background/80 rounded-full hover:bg-background">
-                        <Heart className="h-4 w-4 text-foreground" />
-                      </button>
-                      <AddToCartButton product={{ ...product, category: data.title }} variant="icon" />
-                    </div>
-                  </div>
-                </Link>
-                <div className="mt-4 text-center">
-                  <Link href={`/shop/${product.id}`}>
-                    <h3 className="font-serif text-lg text-foreground group-hover:text-primary transition-colors">
-                      {product.name}
-                    </h3>
-                  </Link>
-                  <p className="mt-1 text-foreground font-medium">{product.price}</p>
-                  <AddToCartButton product={{ ...product, category: data.title }} className="mt-3 w-full text-sm" />
+          <div className="flex flex-col items-center justify-center text-center">
+            {/* Category Image */}
+            <div className="relative w-full max-w-md aspect-square mb-12 overflow-hidden rounded-lg">
+              <Image src={data.image || "/placeholder.svg"} alt={data.title} fill className="object-cover" />
+              <div className="absolute inset-0 bg-foreground/30 flex items-center justify-center">
+                <div className="bg-background/90 px-8 py-4 rounded-full">
+                  <Clock className="h-8 w-8 text-primary mx-auto mb-2" />
+                  <span className="text-sm font-medium uppercase tracking-wider">Coming Soon</span>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
 
-          {/* Back Link */}
-          <div className="mt-12 text-center">
-            <Link href="/collections">
-              <Button variant="outline" className="rounded-none px-8 bg-transparent">
-                View All Collections
-              </Button>
-            </Link>
+            {/* Coming Soon Content */}
+            <div className="max-w-lg">
+              <h2 className="font-serif text-3xl sm:text-4xl text-foreground mb-4">Coming Soon</h2>
+              <p className="text-muted-foreground text-lg mb-8">
+                We're carefully crafting our {data.title.toLowerCase()} collection. Each piece will be handmade with
+                love and attention to detail. Stay tuned for something beautiful!
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-8">
+                  <Link href="/custom-orders">Request Custom Order</Link>
+                </Button>
+                <Button variant="outline" className="rounded-none px-8 bg-transparent" asChild>
+                  <Link href="/collections">
+                    <Bell className="mr-2 h-4 w-4" />
+                    Browse Other Collections
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Decorative Element */}
+            <div className="mt-16 flex items-center gap-4">
+              <div className="h-px w-12 bg-border" />
+              <span className="text-xs uppercase tracking-widest text-muted-foreground">ZK Zewar</span>
+              <div className="h-px w-12 bg-border" />
+            </div>
           </div>
         </div>
       </section>
