@@ -5,46 +5,22 @@ import Link from "next/link"
 
 const collections = [
   {
-    name: "Rings",
-    description: "Elegant rings for every occasion",
-    image: "/elegant-gold-rings-collection-jewelry-display.jpg",
-    href: "/collections/rings",
-    count: 24,
-  },
-  {
     name: "Necklaces",
     description: "Timeless pieces that tell your story",
     image: "/elegant-gold-necklaces-collection-jewelry-display.jpg",
     href: "/collections/necklaces",
-    count: 32,
-  },
-  {
-    name: "Earrings",
-    description: "From studs to statement pieces",
-    image: "/elegant-earrings-collection-jewelry-display-pearls.jpg",
-    href: "/collections/earrings",
-    count: 28,
   },
   {
     name: "Bracelets",
     description: "Handcrafted with love and care",
     image: "/elegant-pearl-bracelets-collection-jewelry-display.jpg",
     href: "/collections/bracelets",
-    count: 18,
-  },
-  {
-    name: "Anklets",
-    description: "Delicate pieces for summer days",
-    image: "/elegant-gold-anklets-collection-jewelry-display.jpg",
-    href: "/collections/anklets",
-    count: 12,
   },
   {
     name: "Custom Orders",
     description: "Design your dream piece",
     image: "/custom-jewelry-design-workspace-elegant.jpg",
     href: "/custom-orders",
-    count: null,
   },
 ]
 
@@ -85,7 +61,6 @@ export default function CollectionsPage() {
                 <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8">
                   <h2 className="font-serif text-2xl sm:text-3xl text-background">{collection.name}</h2>
                   <p className="mt-2 text-background/80">{collection.description}</p>
-                  {collection.count && <p className="mt-2 text-sm text-background/60">{collection.count} pieces</p>}
                   <span className="mt-4 inline-flex items-center text-sm text-background font-medium uppercase tracking-wider group-hover:text-primary transition-colors">
                     Explore Collection
                     <svg
