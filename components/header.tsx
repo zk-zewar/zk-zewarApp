@@ -20,26 +20,11 @@ const navigation = [
 ]
 
 const allProducts = [
-  { id: 1, name: "Pearl Initial Bracelet", price: "Rs. 1,500", category: "Bracelets" },
-  { id: 2, name: "Moon Charm Anklet", price: "Rs. 1,200", category: "Anklets" },
-  { id: 3, name: "Custom Name Necklace", price: "Rs. 2,500", category: "Necklaces" },
-  { id: 4, name: "Minimalist Gold Ring", price: "Rs. 1,800", category: "Rings" },
-  { id: 5, name: "Crystal Drop Earrings", price: "Rs. 2,200", category: "Earrings" },
-  { id: 6, name: "Layered Chain Necklace", price: "Rs. 3,000", category: "Necklaces" },
-  { id: 7, name: "Birthstone Ring", price: "Rs. 2,800", category: "Rings" },
-  { id: 8, name: "Pearl Stud Earrings", price: "Rs. 1,600", category: "Earrings" },
-  { id: 101, name: "Minimalist Gold Band", price: "Rs. 1,800", category: "Rings" },
-  { id: 102, name: "Pearl Statement Ring", price: "Rs. 2,400", category: "Rings" },
-  { id: 103, name: "Birthstone Ring", price: "Rs. 2,800", category: "Rings" },
   { id: 201, name: "Custom Name Necklace", price: "Rs. 2,500", category: "Necklaces" },
   { id: 202, name: "Layered Chain Set", price: "Rs. 3,000", category: "Necklaces" },
   { id: 203, name: "Pearl Pendant", price: "Rs. 2,200", category: "Necklaces" },
-  { id: 301, name: "Pearl Stud Earrings", price: "Rs. 1,600", category: "Earrings" },
-  { id: 302, name: "Crystal Drop Earrings", price: "Rs. 2,200", category: "Earrings" },
-  { id: 303, name: "Gold Hoop Earrings", price: "Rs. 1,800", category: "Earrings" },
   { id: 401, name: "Pearl Initial Bracelet", price: "Rs. 1,500", category: "Bracelets" },
   { id: 402, name: "Chain Link Bracelet", price: "Rs. 1,800", category: "Bracelets" },
-  { id: 501, name: "Moon Charm Anklet", price: "Rs. 1,200", category: "Anklets" },
 ]
 
 export function Header() {

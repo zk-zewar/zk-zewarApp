@@ -1,80 +1,8 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import Image from "next/image"
 import Link from "next/link"
-import { Heart, ChevronDown } from "lucide-react"
+import { Clock, Sparkles, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { AddToCartButton } from "@/components/add-to-cart-button"
-
-const products = [
-  {
-    id: 1,
-    name: "Pearl Initial Bracelet",
-    price: "Rs. 1,500",
-    category: "Bracelets",
-    image: "/pearl-bracelet-with-gold-initial-charm-elegant.jpg",
-    isNew: true,
-  },
-  {
-    id: 2,
-    name: "Moon Charm Anklet",
-    price: "Rs. 1,200",
-    category: "Anklets",
-    image: "/silver-moon-charm-anklet-delicate-feminine.jpg",
-    isNew: true,
-  },
-  {
-    id: 3,
-    name: "Custom Name Necklace",
-    price: "Rs. 2,500",
-    category: "Necklaces",
-    image: "/gold-custom-name-necklace-elegant-script.jpg",
-    isNew: false,
-  },
-  {
-    id: 4,
-    name: "Minimalist Gold Ring",
-    price: "Rs. 1,800",
-    category: "Rings",
-    image: "/minimalist-gold-stacking-ring-elegant.jpg",
-    isNew: false,
-  },
-  {
-    id: 5,
-    name: "Crystal Drop Earrings",
-    price: "Rs. 2,200",
-    category: "Earrings",
-    image: "/crystal-drop-earrings-elegant-feminine.jpg",
-    isNew: true,
-  },
-  {
-    id: 6,
-    name: "Layered Chain Necklace",
-    price: "Rs. 3,000",
-    category: "Necklaces",
-    image: "/layered-gold-chain-necklace-elegant.jpg",
-    isNew: false,
-  },
-  {
-    id: 7,
-    name: "Birthstone Ring",
-    price: "Rs. 2,800",
-    category: "Rings",
-    image: "/birthstone-gold-ring-elegant-feminine.jpg",
-    isNew: false,
-  },
-  {
-    id: 8,
-    name: "Pearl Stud Earrings",
-    price: "Rs. 1,600",
-    category: "Earrings",
-    image: "/pearl-stud-earrings-classic-elegant.jpg",
-    isNew: true,
-  },
-]
-
-const categories = ["All", "Necklaces", "Rings", "Earrings", "Bracelets", "Anklets"]
 
 export default function ShopPage() {
   return (
@@ -93,76 +21,44 @@ export default function ShopPage() {
         </div>
       </section>
 
-      {/* Filters & Products */}
-      <section className="py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Filter Bar */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 pb-8 border-b border-border">
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <Button key={category} variant={category === "All" ? "default" : "outline"} className="rounded-none">
-                  {category}
-                </Button>
-              ))}
-            </div>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="rounded-none bg-transparent">
-                  Sort By <ChevronDown className="ml-2 h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>Newest</DropdownMenuItem>
-                <DropdownMenuItem>Price: Low to High</DropdownMenuItem>
-                <DropdownMenuItem>Price: High to Low</DropdownMenuItem>
-                <DropdownMenuItem>Best Selling</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-
-          {/* Products Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {products.map((product) => (
-              <div key={product.id} className="group">
-                <Link href={`/shop/${product.id}`}>
-                  <div className="relative aspect-square overflow-hidden bg-muted">
-                    <Image
-                      src={product.image || "/placeholder.svg"}
-                      alt={product.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    {product.isNew && (
-                      <span className="absolute top-3 left-3 bg-primary text-primary-foreground text-xs px-2 py-1 uppercase tracking-wider">
-                        New
-                      </span>
-                    )}
-                    <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <button className="p-2 bg-background/80 rounded-full hover:bg-background">
-                        <Heart className="h-4 w-4 text-foreground" />
-                      </button>
-                      <AddToCartButton product={product} variant="icon" />
-                    </div>
-                  </div>
-                </Link>
-                <div className="mt-4 text-center">
-                  <p className="text-xs text-muted-foreground uppercase tracking-wider">{product.category}</p>
-                  <Link href={`/shop/${product.id}`}>
-                    <h3 className="mt-1 font-serif text-lg text-foreground group-hover:text-primary transition-colors">
-                      {product.name}
-                    </h3>
-                  </Link>
-                  <p className="mt-1 text-foreground font-medium">{product.price}</p>
-                  <AddToCartButton product={product} className="mt-3 w-full text-sm" />
+      {/* Coming Soon Section */}
+      <section className="py-16 sm:py-24">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-lg bg-muted">
+            <div className="aspect-[16/9] relative">
+              <img src="/elegant-jewelry-collection-display-gold-pearls.jpg" alt="Shop Coming Soon" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-foreground/50" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+                <div className="w-16 h-16 rounded-full bg-background/20 flex items-center justify-center mb-6">
+                  <Clock className="w-8 h-8 text-background" />
+                </div>
+                <h2 className="font-serif text-3xl sm:text-4xl text-background mb-3">Coming Soon</h2>
+                <p className="text-background/80 max-w-md mb-6">
+                  We are curating our complete jewelry collection for you. In the meantime, explore our featured
+                  collections or request a custom piece.
+                </p>
+                <div className="flex items-center gap-2 text-background/60 text-sm">
+                  <Sparkles className="w-4 h-4" />
+                  <span>Something beautiful is on its way</span>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
 
-          {/* Load More */}
-          <div className="mt-12 text-center">
-            <Button variant="outline" size="lg" className="rounded-none px-12 bg-transparent">
-              Load More
+          {/* Action Buttons */}
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              asChild
+              size="lg"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-8"
+            >
+              <Link href="/custom-orders">
+                Request Custom Order
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="rounded-none px-8 bg-transparent">
+              <Link href="/collections">Browse Collections</Link>
             </Button>
           </div>
         </div>

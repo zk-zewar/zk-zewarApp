@@ -9,7 +9,7 @@ export function HeroSection() {
         <img
           src="/images/handcrafted-20designs-20personalized-20pieces-20shop-20now-20-281-29.png"
           alt="ZK Zewar - Timeless Elegance, Crafted for You"
-          className="h-full w-full object-cover object-top sm:object-center"
+          className="h-full w-full object-cover object-[center_30%] sm:object-[center_40%]"
         />
         {/* Subtle overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
@@ -23,8 +23,8 @@ export function HeroSection() {
             size="lg"
             className="bg-[#c9a88e] text-white hover:bg-[#b89478] rounded-none px-8 py-6 text-sm uppercase tracking-wider"
           >
-            <Link href="/shop">
-              Shop Now
+            <Link href="/collections">
+              Explore Collections
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>

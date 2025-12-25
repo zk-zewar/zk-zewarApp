@@ -3,22 +3,16 @@ import { ArrowRight } from "lucide-react"
 
 const collections = [
   {
-    name: "Rings",
-    description: "Symbols of love and commitment",
-    image: "/elegant-gold-ring-with-diamond-on-beige-velvet-bac.jpg",
-    href: "/collections/rings",
-  },
-  {
     name: "Necklaces",
     description: "Grace your neckline",
     image: "/delicate-gold-chain-necklace-with-pendant-on-cream.jpg",
     href: "/collections/necklaces",
   },
   {
-    name: "Earrings",
-    description: "Frame your beauty",
-    image: "/elegant-gold-drop-earrings-on-soft-beige-linen.jpg",
-    href: "/collections/earrings",
+    name: "Bracelets",
+    description: "Elegance for your wrist",
+    image: "/elegant-pearl-bracelets-collection-jewelry-display.jpg",
+    href: "/collections/bracelets",
   },
   {
     name: "Custom Orders",
@@ -39,7 +33,7 @@ export function FeaturedCollections() {
           </h2>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {collections.map((collection) => (
             <Link key={collection.name} href={collection.href} className="group relative overflow-hidden bg-muted">
               <div className="aspect-[4/5] overflow-hidden">
