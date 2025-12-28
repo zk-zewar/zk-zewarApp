@@ -176,7 +176,7 @@ export default function FAQsPage() {
                 asChild
                 className="rounded-none bg-[#25D366] hover:bg-[#25D366]/90 text-white px-8"
               >
-                <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/+923195459398" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 h-4 w-4" />
                   Chat on WhatsApp
                 </a>

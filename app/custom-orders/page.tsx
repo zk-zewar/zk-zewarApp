@@ -57,7 +57,7 @@ export default function CustomOrdersPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const message = `Hi! I'd like to place a custom order:\n\nName: ${formData.name}\nJewelry Type: ${formData.jewelryType}\nBudget: ${formData.budget}\n\nDescription: ${formData.description}`
-    window.open(`https://wa.me/1234567890?text=${encodeURIComponent(message)}`, "_blank")
+    window.open(`https://wa.me/+923195459398?text=${encodeURIComponent(message)}`, "_blank")
   }
 
   return (
@@ -241,7 +241,7 @@ export default function CustomOrdersPage() {
                   Send us a message on WhatsApp and we'll help you design your perfect piece.
                 </p>
                 <Button asChild className="rounded-lg bg-gradient-to-r from-[#25D366] to-[#1ebe57] hover:from-[#1ebe57] hover:to-[#25D366] text-white transition-all">
-                  <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                  <a href="https://wa.me/+923195459398" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                     <MessageCircle className="h-5 w-5" />
                     Chat on WhatsApp
                   </a>
