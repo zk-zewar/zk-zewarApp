@@ -50,7 +50,7 @@ export default function CheckoutPage() {
             <h1 className="font-serif text-3xl text-foreground mb-4">Your cart is empty</h1>
             <p className="text-muted-foreground mb-8">Add some items to your cart to proceed with checkout.</p>
             <Button asChild className="rounded-none">
-              <Link href="/shop">Continue Shopping</Link>
+              <Link href="/collections">Continue Shopping</Link>
             </Button>
           </div>
         </section>
@@ -83,7 +83,7 @@ export default function CheckoutPage() {
                 A confirmation message will be sent to your WhatsApp number.
               </p>
               <Button asChild className="rounded-none">
-                <Link href="/shop">Continue Shopping</Link>
+                <Link href="/collections">Continue Shopping</Link>
               </Button>
             </div>
           </div>

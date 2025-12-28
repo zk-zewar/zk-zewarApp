@@ -42,7 +42,7 @@ export function Header() {
   const handleProductClick = (productId: number) => {
     setIsSearchOpen(false)
     setSearchQuery("")
-    router.push(`/shop/${productId}`)
+    router.push(`/collections/${productId}`)
   }
 
   return (

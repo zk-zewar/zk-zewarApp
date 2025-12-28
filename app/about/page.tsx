@@ -110,7 +110,7 @@ export default function AboutPage() {
 
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/shop"
+              href="/collections"
               className="inline-flex items-center justify-center px-10 py-3 bg-[#9b7558] text-white hover:bg-[#b89478]  transition"
             >
               Shop Collection

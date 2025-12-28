@@ -23,7 +23,7 @@ export function CartDrawer() {
             <h3 className="font-serif text-lg text-foreground mb-2">Your cart is empty</h3>
             <p className="text-muted-foreground text-sm mb-6">Add some beautiful jewelry to get started!</p>
             <Button onClick={() => setIsCartOpen(false)} variant="outline" className="rounded-none" asChild>
-              <Link href="/shop">Continue Shopping</Link>
+              <Link href="/collections">Continue Shopping</Link>
             </Button>
           </div>
         ) : (
