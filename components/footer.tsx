@@ -45,7 +45,7 @@ export function Footer() {
                 <span className="sr-only">Instagram</span>
               </Link>
               <Link
-                href="https://www.facebook.com/profile.php?id=61585608028075"
+                href="https://web.facebook.com/profile.php?id=61585608028075&_rdc=1&_rdr#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-background/70 hover:text-background transition-colors"

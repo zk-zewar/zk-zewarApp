@@ -24,7 +24,7 @@ export function InstagramGallery() {
           {images.map((image, index) => (
             <Link
               key={index}
-              href="https://instagram.com"
+              href="https://www.instagram.com/zkzewar"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative aspect-square overflow-hidden"
