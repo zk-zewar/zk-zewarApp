@@ -8,119 +8,175 @@ export default function ShippingReturnsPage() {
       <Header />
 
       {/* Hero */}
-      <section className="pt-20">
-        <div className="bg-muted py-16 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-foreground">Shipping & Returns</h1>
-            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to know about getting your jewelry to you and our return policies.
+      <section>
+        <div className="relative overflow-hidden bg-[#9b7558] text-background py-20 sm:py-28">
+          <div className="mx-auto max-w-4xl px-4 text-center">
+            <span className="uppercase tracking-widest text-sm ">
+              Policies & Information
+            </span>
+            <h1 className="mt-4 font-serif text-4xl sm:text-5xl lg:text-6xl ">
+              Shipping & Returns
+            </h1>
+            <p className="mt-6 text-lg  max-w-2xl mx-auto">
+              Everything you need to know about deliveries, returns, and exchanges.
             </p>
           </div>
+          <div className="absolute inset-x-0 bottom-0 h-px bg-border" />
         </div>
       </section>
 
-      {/* Quick Info */}
-      <section className="py-12 border-b border-border">
+      {/* Quick Info Cards */}
+      <section className="py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="flex items-center gap-4 p-4 bg-muted">
-              <Truck className="h-8 w-8 text-primary flex-shrink-0" />
-              <div>
-                <p className="font-medium text-foreground">Free Shipping</p>
-                <p className="text-sm text-muted-foreground">On orders over Rs. 3,000</p>
+            {[
+              {
+                icon: Truck,
+                title: "Free Shipping",
+                desc: "On orders over Rs. 3,000",
+              },
+              {
+                icon: Package,
+                title: "Secure Packaging",
+                desc: "Gift-ready premium boxes",
+              },
+              {
+                icon: RefreshCw,
+                title: "Easy Returns",
+                desc: "7-day return window",
+              },
+              {
+                icon: Shield,
+                title: "Quality Guarantee",
+                desc: "100% satisfaction promise",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-4 p-6 bg-card border border-border shadow-sm hover:shadow-md transition"
+              >
+                <item.icon className="h-9 w-9 text-primary" />
+                <div>
+                  <p className="font-medium text-foreground">{item.title}</p>
+                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+                </div>
               </div>
-            </div>
-            <div className="flex items-center gap-4 p-4 bg-muted">
-              <Package className="h-8 w-8 text-primary flex-shrink-0" />
-              <div>
-                <p className="font-medium text-foreground">Secure Packaging</p>
-                <p className="text-sm text-muted-foreground">Beautiful gift-ready boxes</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 p-4 bg-muted">
-              <RefreshCw className="h-8 w-8 text-primary flex-shrink-0" />
-              <div>
-                <p className="font-medium text-foreground">Easy Returns</p>
-                <p className="text-sm text-muted-foreground">7-day return window</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 p-4 bg-muted">
-              <Shield className="h-8 w-8 text-primary flex-shrink-0" />
-              <div>
-                <p className="font-medium text-foreground">Quality Guarantee</p>
-                <p className="text-sm text-muted-foreground">100% satisfaction</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Content */}
-      <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <div className="prose prose-lg max-w-none">
-            <h2 className="font-serif text-2xl text-foreground">Shipping Information</h2>
+      <section className="py-5">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16">
 
-            <h3 className="font-serif text-xl text-foreground mt-8">Domestic Shipping (Pakistan)</h3>
-            <ul className="text-muted-foreground space-y-2">
-              <li>Standard Shipping: 3-5 business days (Rs. 200)</li>
-              <li>Express Shipping: 1-2 business days (Rs. 400)</li>
+          {/* Shipping Information */}
+          <div className="bg-card border border-border p-8 shadow-sm">
+            <h2 className="font-serif text-2xl text-foreground mb-6">
+              Shipping Information
+            </h2>
+
+            <h3 className="font-serif text-lg text-foreground mt-6">
+              Domestic Shipping (Pakistan)
+            </h3>
+            <ul className="mt-4 space-y-2 text-muted-foreground list-disc pl-5">
+              <li>Standard Shipping: 3–5 business days (Rs. 200)</li>
+              <li>Express Shipping: 1–2 business days (Rs. 400)</li>
               <li>Free shipping on orders over Rs. 3,000</li>
               <li>Cash on Delivery available (additional Rs. 50)</li>
             </ul>
 
-            <h3 className="font-serif text-xl text-foreground mt-8">International Shipping</h3>
-            <ul className="text-muted-foreground space-y-2">
-              <li>Standard International: 10-15 business days</li>
-              <li>Shipping costs calculated at checkout based on destination</li>
-              <li>Customs duties and taxes may apply (buyer's responsibility)</li>
+            <h3 className="font-serif text-lg text-foreground mt-8">
+              International Shipping
+            </h3>
+            <ul className="mt-4 space-y-2 text-muted-foreground list-disc pl-5">
+              <li>Standard International: 10–15 business days</li>
+              <li>Shipping costs calculated at checkout</li>
+              <li>Customs duties & taxes are buyer’s responsibility</li>
               <li>Tracking provided for all international orders</li>
             </ul>
 
-            <h3 className="font-serif text-xl text-foreground mt-8">Order Processing</h3>
-            <p className="text-muted-foreground">
-              Orders are processed within 1-2 business days. Custom orders require 7-14 days for creation before
-              shipping. You'll receive a WhatsApp notification when your order ships.
+            <h3 className="font-serif text-lg text-foreground mt-8">
+              Order Processing
+            </h3>
+            <p className="mt-4 text-muted-foreground">
+              Orders are processed within 1–2 business days. Custom orders require
+              7–14 days before shipping. You’ll receive a WhatsApp notification once
+              your order is shipped.
+            </p>
+          </div>
+
+          {/* Returns & Exchanges */}
+          <div className="bg-card border border-border p-8 shadow-sm">
+            <h2 className="font-serif text-2xl text-foreground mb-6">
+              Returns & Exchanges
+            </h2>
+
+            <h3 className="font-serif text-lg text-foreground mt-6">
+              Return Policy
+            </h3>
+            <p className="mt-4 text-muted-foreground">
+              We want you to love your jewelry. If you’re not completely satisfied,
+              unworn items may be returned within 7 days of delivery for a refund
+              or exchange.
             </p>
 
-            <hr className="my-12 border-border" />
-
-            <h2 className="font-serif text-2xl text-foreground">Returns & Exchanges</h2>
-
-            <h3 className="font-serif text-xl text-foreground mt-8">Return Policy</h3>
-            <p className="text-muted-foreground">
-              We want you to love your jewelry! If you're not completely satisfied, you may return unworn items within 7
-              days of delivery for a full refund or exchange.
-            </p>
-
-            <h3 className="font-serif text-xl text-foreground mt-8">Return Conditions</h3>
-            <ul className="text-muted-foreground space-y-2">
+            <h3 className="font-serif text-lg text-foreground mt-8">
+              Return Conditions
+            </h3>
+            <ul className="mt-4 space-y-2 text-muted-foreground list-disc pl-5">
               <li>Items must be unworn and in original condition</li>
               <li>Original packaging must be included</li>
-              <li>Return request must be made within 7 days of delivery</li>
-              <li>Custom and personalized items cannot be returned (unless defective)</li>
+              <li>Return request must be made within 7 days</li>
+              <li>Custom & personalized items are non-returnable</li>
               <li>Sale items are final sale</li>
             </ul>
 
-            <h3 className="font-serif text-xl text-foreground mt-8">How to Return</h3>
-            <ol className="text-muted-foreground space-y-2">
-              <li>Contact us via WhatsApp or email with your order number</li>
-              <li>Receive return authorization and shipping instructions</li>
+            <h3 className="font-serif text-lg text-foreground mt-8">
+              How to Return
+            </h3>
+            <ol className="mt-4 space-y-2 text-muted-foreground list-decimal pl-5">
+              <li>Contact us via WhatsApp or email with order number</li>
+              <li>Receive return authorization & instructions</li>
               <li>Ship item back in original packaging</li>
-              <li>Refund processed within 3-5 business days of receiving return</li>
+              <li>Refund processed within 3–5 business days</li>
             </ol>
 
-            <h3 className="font-serif text-xl text-foreground mt-8">Exchanges</h3>
-            <p className="text-muted-foreground">
-              Want a different size or style? We're happy to help! Contact us within 7 days of delivery to arrange an
-              exchange. Exchange shipping is free for domestic orders.
+            <h3 className="font-serif text-lg text-foreground mt-8">
+              Exchanges
+            </h3>
+            <p className="mt-4 text-muted-foreground">
+              Need a different size or style? Contact us within 7 days of delivery.
+              Exchange shipping is free for domestic orders.
             </p>
 
-            <h3 className="font-serif text-xl text-foreground mt-8">Damaged or Defective Items</h3>
-            <p className="text-muted-foreground">
-              If your item arrives damaged or defective, please contact us immediately with photos. We'll arrange a
-              replacement or full refund at no additional cost to you.
+            <h3 className="font-serif text-lg text-foreground mt-8">
+              Damaged or Defective Items
+            </h3>
+            <p className="mt-4 text-muted-foreground">
+              If your item arrives damaged or defective, contact us immediately
+              with photos. We’ll arrange a replacement or full refund.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-20">
+        <div className="mx-auto max-w-4xl px-4">
+          <div className="rounded-lg border border-border bg-gradient-to-br from-muted to-background p-10 text-center">
+            <h2 className="font-serif text-3xl text-foreground mb-4">
+              Need More Help?
+            </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto mb-8">
+              Our team is always here to assist you with shipping, returns, or exchanges.
+            </p>
+            <a
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-none bg-[#9b7558] text-background hover:bg-[#9b7558]/70 hover:text-foreground border border-border px-8 py-3 text-sm font-medium transition"
+            >
+              Contact Us
+            </a>
           </div>
         </div>
       </section>

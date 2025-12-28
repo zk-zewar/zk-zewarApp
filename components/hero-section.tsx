@@ -23,7 +23,7 @@ export function HeroSection() {
           <Button
             asChild
             size="lg"
-            className="w-full sm:w-auto bg-[#c9a88e] text-white hover:bg-[#b89478] rounded-none px-8 py-5 text-xs sm:text-sm uppercase tracking-wider"
+            className="w-full sm:w-auto bg-[#9b7558] text-white hover:bg-[#b89478] rounded-none px-8 py-5 text-xs sm:text-sm uppercase tracking-wider"
           >
             <Link href="/collections">
               Explore Collections

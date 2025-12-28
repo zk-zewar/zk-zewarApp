@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Phone, Mail, Clock, MessageCircle, Instagram } from "lucide-react"
+import { Phone, Mail, Clock,  Instagram } from "lucide-react"
 
 const contactInfo = [
   {
@@ -63,7 +63,7 @@ export default function ContactPage() {
       <Header />
 
       {/* Hero */}
-      <section className="pt-14 bg-[#c9a88e] text-white">
+      <section className="pt-14 bg-[#9b7558] text-white">
         <div className=" py-16 border-b">
           <div className="mx-auto max-w-4xl px-4 text-center">
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl">
@@ -178,7 +178,7 @@ export default function ContactPage() {
                 />
               </div>
 
-              <Button size="lg" className="w-full rounded-lg">
+              <Button size="lg" className="w-full rounded-lg bg-[#9b7558] text-background hover:bg-[#9b7558]/70 hover:text-foreground">
                 Send Message
               </Button>
             </form>

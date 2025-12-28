@@ -109,33 +109,52 @@ export default function FAQsPage() {
       <Header />
 
       {/* Hero */}
-      <section className="pt-20">
-        <div className="bg-muted py-16 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-foreground">FAQs</h1>
-            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-              Find answers to commonly asked questions about orders, shipping, custom pieces, and more.
+      <section>
+        <div className="relative overflow-hidden bg-[#9b7558] text-background py-20 sm:py-28">
+          <div className="mx-auto max-w-4xl px-4 text-center">
+            <span className="uppercase tracking-widest text-sm ">
+              Help Center
+            </span>
+            <h1 className="mt-4 font-serif text-4xl sm:text-5xl lg:text-6xl">
+              Frequently Asked Questions
+            </h1>
+            <p className="mt-6 text-lg text-background/70 max-w-2xl mx-auto">
+              Everything you need to know about orders, shipping, custom jewelry, and more.
             </p>
           </div>
+
+          {/* decorative line */}
+          <div className="absolute inset-x-0 bottom-0 h-px bg-border" />
         </div>
       </section>
 
+
       {/* FAQs */}
       <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="space-y-12">
             {faqs.map((category) => (
-              <div key={category.category}>
-                <h2 className="font-serif text-2xl text-foreground mb-6">{category.category}</h2>
+              <div
+                key={category.category}
+                className="bg-[#d7ad93] border border-border p-6 sm:p-8 shadow-sm transition hover:shadow-md"
+              >
+                <h2 className="font-serif text-2xl text-foreground mb-6">
+                  {category.category}
+                </h2>
+
                 <Accordion type="single" collapsible className="space-y-4">
                   {category.questions.map((faq, index) => (
                     <AccordionItem
                       key={index}
                       value={`${category.category}-${index}`}
-                      className="border border-border px-4"
+                      className="border border-border bg-background px-4"
                     >
-                      <AccordionTrigger className="text-left hover:no-underline py-4">{faq.question}</AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground pb-4">{faq.answer}</AccordionContent>
+                      <AccordionTrigger className="text-left py-4 text-base font-medium hover:no-underline">
+                        {faq.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
+                        {faq.answer}
+                      </AccordionContent>
                     </AccordionItem>
                   ))}
                 </Accordion>
@@ -144,21 +163,31 @@ export default function FAQsPage() {
           </div>
 
           {/* Still Have Questions */}
-          <div className="mt-16 text-center bg-muted p-8 sm:p-12">
-            <h2 className="font-serif text-2xl text-foreground mb-4">Still Have Questions?</h2>
-            <p className="text-muted-foreground mb-6">Can't find what you're looking for? We're here to help!</p>
+          <div className="mt-20 rounded-lg border border-border bg-[#d7ad93] p-10 sm:p-14 text-center">
+            <h2 className="font-serif text-3xl text-background mb-4">
+              Still Have Questions?
+            </h2>
+            <p className="text-background max-w-xl mx-auto mb-8">
+              Our team is always happy to help you with orders, custom designs, or anything else.
+            </p>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild className="rounded-none bg-[#25D366] hover:bg-[#25D366]/90 text-white">
+              <Button
+                asChild
+                className="rounded-none bg-[#25D366] hover:bg-[#25D366]/90 text-white px-8"
+              >
                 <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 h-4 w-4" />
-                  WhatsApp Us
+                  Chat on WhatsApp
                 </a>
               </Button>
-              <Button asChild variant="outline" className="rounded-none bg-transparent">
-                <Link href="/contact">Contact Page</Link>
+
+              <Button asChild  className="rounded-none px-8 bg-[#9b7558] text-background hover:bg-[#9b7558]/60">
+                <Link href="/contact">Visit Contact Page</Link>
               </Button>
             </div>
           </div>
+
         </div>
       </section>
 
