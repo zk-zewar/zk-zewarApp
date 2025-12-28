@@ -1,111 +1,131 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronLeft, ChevronRight, Star } from "lucide-react"
+import { Star, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const testimonials = [
   {
     content:
-      "ZK Zewar created the most beautiful engagement ring for my fiancée. The attention to detail and the personal touch made the experience unforgettable. She cries every time she looks at it!",
-    author: "Sarah M.",
-    location: "New York",
+      "This is a very nice place to buy jewelry and related stuff. Prices are not very high but they have a very good variety.",
+    author: "Faysal Ishrat",
     rating: 5,
   },
   {
     content:
-      "I've been collecting jewelry for years, and ZK Zewar pieces are by far the most elegant and well-crafted. The personalized necklace with my children's initials is my most treasured possession.",
-    author: "Amina K.",
-    location: "Dubai",
+      "Absolutely stunning and elegant jewellery. You can get festive and other events jewellery from there. Staff is cooperative as well.",
+    author: "Fatima Syed",
     rating: 5,
   },
   {
     content:
-      "The custom order process was seamless. They understood exactly what I wanted and delivered beyond my expectations. The quality is exceptional, and their customer service is outstanding.",
-    author: "Priya S.",
-    location: "London",
+      "I've bought a pair of earrings, its beautiful just as it exactly how it looked on the site. Highly recommend.",
+    author: "Saiqa Noureen",
+    rating: 5,
+  },
+  {
+    content:
+      "Beautiful craftsmanship and excellent service. I loved the detailing and finishing of my order.",
+    author: "Ayesha Khan",
     rating: 5,
   },
 ]
 
 export function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [index, setIndex] = useState(0)
 
-  const next = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-  }
+  const visibleCards = 3
+  const maxIndex = testimonials.length - visibleCards
 
-  const prev = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
+  const next = () => setIndex((prev) => Math.min(prev + 1, maxIndex))
+  const prev = () => setIndex((prev) => Math.max(prev - 1, 0))
 
   return (
-    <section className="py-24 sm:py-32 bg-secondary">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <span className="text-sm uppercase tracking-[0.3em] text-primary">Testimonials</span>
-          <h2 className="mt-4 font-serif text-3xl sm:text-4xl md:text-5xl font-medium text-foreground">
-            Words from Our Clients
-          </h2>
-        </div>
+    <section className="py-24 bg-background/95">
+      <div className="mx-auto  px-4 sm:px-6 lg:px-8">
 
-        <div className="mt-16 relative">
-          <div className="overflow-hidden">
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            >
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="w-full flex-shrink-0 text-center px-4">
+        {/* Heading */}
+        <h2 className="text-center text-2xl sm:text-3xl font-semibold text-foreground">
+          Our Client Reviews
+        </h2>
+
+        {/* Slider */}
+        <div className="relative mt-16 overflow-hidden">
+          <div
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{
+              transform: `translateX(-${index * (100 / visibleCards)}%)`,
+            }}
+          >
+            {testimonials.map((item, i) => (
+              <div
+                key={i}
+                className="
+                  w-full
+                  sm:w-1/2
+                  lg:w-1/3
+                  shrink-0
+                  px-4
+                "
+              >
+                <div
+                  className="
+                    bg-white
+                    rounded-xl
+                    p-8
+                    text-center
+                    shadow-[0_20px_40px_rgba(0,0,0,0.25)]
+                    hover:-translate-y-2
+                    transition-transform
+                    duration-300
+                    h-[40vh]
+                  "
+                >
+                  {/* Stars */}
                   <div className="flex justify-center gap-1 mb-6">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-primary text-primary" />
+                    {[...Array(item.rating)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className="h-5 w-5 fill-[#f5b301] text-[#f5b301]"
+                      />
                     ))}
                   </div>
-                  <blockquote className="font-serif text-xl sm:text-2xl text-foreground leading-relaxed italic">
-                    "{testimonial.content}"
-                  </blockquote>
-                  <div className="mt-8">
-                    <p className="font-medium text-foreground">{testimonial.author}</p>
-                    <p className="text-sm text-foreground/60">{testimonial.location}</p>
-                  </div>
+
+                  {/* Content */}
+                  <p className="text-foreground/70 leading-relaxed">
+                    {item.content}
+                  </p>
+
+                  {/* Author */}
+                  <p className="mt-8 font-semibold text-foreground">
+                    {item.author}
+                  </p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
 
-          <div className="mt-10 flex justify-center gap-4">
+          {/* Arrows */}
+          <div className="mt-12 flex justify-center gap-4">
             <Button
               variant="outline"
               size="icon"
               onClick={prev}
-              className="rounded-full border-border hover:bg-muted bg-transparent"
+              disabled={index === 0}
+              className="rounded-full"
             >
-              <ChevronLeft className="h-5 w-5" />
-              <span className="sr-only">Previous testimonial</span>
+              <ChevronLeft />
             </Button>
+
             <Button
               variant="outline"
               size="icon"
               onClick={next}
-              className="rounded-full border-border hover:bg-muted bg-transparent"
+              disabled={index === maxIndex}
+              className="rounded-full"
             >
-              <ChevronRight className="h-5 w-5" />
-              <span className="sr-only">Next testimonial</span>
+              <ChevronRight />
             </Button>
-          </div>
-
-          <div className="mt-6 flex justify-center gap-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  index === currentIndex ? "bg-primary" : "bg-border"
-                }`}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
-            ))}
           </div>
         </div>
       </div>

@@ -4,16 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 const footerLinks = {
-  shop: [
-    { name: "All Jewelry", href: "/shop" },
-    { name: "Rings", href: "/collections/rings" },
-    { name: "Necklaces", href: "/collections/necklaces" },
-    { name: "Earrings", href: "/collections/earrings" },
-    { name: "Bracelets", href: "/collections/bracelets" },
-  ],
   company: [
     { name: "About Us", href: "/about" },
-    { name: "Custom Orders", href: "/custom-orders" },
     { name: "Contact", href: "/contact" },
     { name: "FAQs", href: "/faqs" },
   ],
@@ -27,27 +19,7 @@ const footerLinks = {
 export function Footer() {
   return (
     <footer className="bg-foreground text-background">
-      {/* Newsletter Section */}
-      <div className="border-b border-background/10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="font-serif text-2xl sm:text-3xl">Join Our Inner Circle</h3>
-              <p className="mt-2 text-background/70">
-                Subscribe for exclusive previews, special offers, and jewelry care tips.
-              </p>
-            </div>
-            <form className="flex flex-col sm:flex-row gap-4">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 bg-background/10 border-background/20 text-background placeholder:text-background/50 rounded-none"
-              />
-              <Button className="bg-primary text-foreground hover:bg-primary/90 rounded-none px-8">Subscribe</Button>
-            </form>
-          </div>
-        </div>
-      </div>
+    
 
       {/* Main Footer */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
@@ -58,12 +30,13 @@ export function Footer() {
               <span className="font-serif text-3xl tracking-wider">ZK Zewar</span>
             </Link>
             <p className="mt-4 text-background/70 max-w-sm">
-              Timeless elegance, crafted for you. Handmade jewelry that celebrates your unique story and most cherished
+              Timeless elegance, crafted for you 
+              <br /> Handmade jewelry that celebrates your unique story and most cherished
               moments.
             </p>
             <div className="mt-6 flex gap-4">
               <Link
-                href="https://instagram.com"
+                href="https://www.instagram.com/zkzewar"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-background/70 hover:text-primary transition-colors"
@@ -72,7 +45,7 @@ export function Footer() {
                 <span className="sr-only">Instagram</span>
               </Link>
               <Link
-                href="https://facebook.com"
+                href="https://www.facebook.com/profile.php?id=61585608028075"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-background/70 hover:text-primary transition-colors"
@@ -81,7 +54,7 @@ export function Footer() {
                 <span className="sr-only">Facebook</span>
               </Link>
               <Link
-                href="https://wa.me/1234567890"
+                href="https://wa.me/+923195459398"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-background/70 hover:text-primary transition-colors"
@@ -92,23 +65,11 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Shop Links */}
-          <div>
-            <h4 className="text-sm font-medium uppercase tracking-wider">Shop</h4>
-            <ul className="mt-4 space-y-3">
-              {footerLinks.shop.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-background/70 hover:text-primary transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+       
 
           {/* Company Links */}
           <div>
-            <h4 className="text-sm font-medium uppercase tracking-wider">Company</h4>
+            <h4 className="text-sm font-medium uppercase tracking-widest">Company</h4>
             <ul className="mt-4 space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
@@ -144,7 +105,7 @@ export function Footer() {
 
       {/* WhatsApp Float Button */}
       <Link
-        href="https://wa.me/1234567890"
+        href="https://wa.me/+923195459398"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform"

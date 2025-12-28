@@ -12,11 +12,8 @@ import { useCart } from "@/contexts/cart-context"
 import { useRouter } from "next/navigation"
 
 const navigation = [
-  { name: "Shop", href: "/shop" },
   { name: "Collections", href: "/collections" },
   { name: "Custom Orders", href: "/custom-orders" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
 ]
 
 const allProducts = [
@@ -83,7 +80,7 @@ export function Header() {
 
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/untitled-20design-20-282-29.png"
+                src="/icon.png"
                 alt="ZK Zewar Logo"
                 width={80}
                 height={80}
@@ -97,21 +94,21 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors tracking-wide uppercase"
+                className="text-lg font-medium text-foreground/80 hover:text-primary transition-colors tracking-wide uppercase"
               >
                 {item.name}
               </Link>
             ))}
           </div>
 
-          <div className="flex items-center gap-2 ml-auto lg:ml-0">
+          <div className="flex items-center gap-0 ml-auto lg:ml-0">
             <Button
               variant="ghost"
               size="icon"
               className="text-foreground/80 hover:text-primary"
               onClick={() => setIsSearchOpen(true)}
             >
-              <Search className="h-5 w-5" />
+              <Search className="h-40 w-40" />
               <span className="sr-only">Search</span>
             </Button>
             <Button
@@ -120,7 +117,7 @@ export function Header() {
               className="text-foreground/80 hover:text-primary relative"
               onClick={() => setIsCartOpen(true)}
             >
-              <ShoppingBag className="h-5 w-5" />
+              <ShoppingBag className="h-40 w-40" />
               {totalItems > 0 && (
                 <span className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-primary-foreground text-xs flex items-center justify-center rounded-full">
                   {totalItems}
@@ -136,7 +133,7 @@ export function Header() {
         <DialogContent className="sm:max-w-lg p-0 gap-0">
           <DialogTitle className="sr-only">Search Products</DialogTitle>
           <div className="flex items-center border-b border-border px-4">
-            <Search className="h-5 w-5 text-muted-foreground" />
+            <Search className="h-40 w-40 text-muted-foreground" />
             <Input
               placeholder="Search for products..."
               value={searchQuery}
@@ -150,7 +147,7 @@ export function Header() {
               </Button>
             )}
           </div>
-          <div className="max-h-[60vh] overflow-y-auto">
+          <div className="max-h-[80vh] overflow-y-auto">
             {searchQuery.trim() === "" ? (
               <div className="p-6 text-center text-muted-foreground">
                 <p>Start typing to search for jewelry...</p>

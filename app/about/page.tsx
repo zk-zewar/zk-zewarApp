@@ -2,6 +2,8 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
 import { Gem, Heart, Sparkles, Users } from "lucide-react"
+import { WhyChooseUs } from "@/components/why-choose-us"
+import { BrandIntro } from "@/components/brand-intro"
 
 const values = [
   {
@@ -31,65 +33,9 @@ export default function AboutPage() {
     <main className="min-h-screen bg-background">
       <Header />
 
-      {/* Hero */}
-      <section className="pt-20">
-        <div className="relative h-[50vh] min-h-[400px]">
-          <Image src="/placeholder.svg?height=800&width=1600" alt="About ZK Zewar" fill className="object-cover" />
-          <div className="absolute inset-0 bg-foreground/50" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center text-background px-4">
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl">Our Story</h1>
-              <p className="mt-4 text-lg sm:text-xl max-w-2xl mx-auto text-background/90">
-                Timeless Elegance, Crafted for You
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Story Section */}
-      <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="relative aspect-[4/5] overflow-hidden">
-              <Image
-                src="/placeholder.svg?height=800&width=640"
-                alt="Founder of ZK Zewar"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <span className="text-sm uppercase tracking-wider text-primary">The Beginning</span>
-              <h2 className="mt-4 font-serif text-3xl sm:text-4xl text-foreground">A Passion Turned Into Purpose</h2>
-              <div className="mt-6 space-y-4 text-muted-foreground">
-                <p>
-                  ZK Zewar began as a small dream in a tiny room, where a love for beautiful jewelry and meaningful
-                  designs came together. What started as creating pieces for friends and family soon blossomed into
-                  something much bigger.
-                </p>
-                <p>
-                  We believe that jewelry is more than just an accessory – it's a way to express your personality,
-                  commemorate special moments, and carry meaningful symbols close to your heart. Every piece we create
-                  is designed with this philosophy in mind.
-                </p>
-                <p>
-                  Today, ZK Zewar is known for its handcrafted designs, personalized pieces, and commitment to quality.
-                  From delicate initial bracelets to custom statement pieces, we take pride in creating jewelry that our
-                  customers treasure for years to come.
-                </p>
-              </div>
-              <div className="mt-8 pt-8 border-t border-border">
-                <p className="font-serif text-xl text-foreground italic">
-                  "Every piece tells a story. Let us help you tell yours."
-                </p>
-                <p className="mt-2 text-muted-foreground">— Founder, ZK Zewar</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+ <BrandIntro />
+ <WhyChooseUs />
       {/* Values */}
       <section className="py-16 sm:py-24 bg-muted">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
