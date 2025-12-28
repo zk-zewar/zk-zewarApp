@@ -18,7 +18,7 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-background">
+    <footer className="bg-[#9b7558] text-background">
     
 
       {/* Main Footer */}
@@ -27,9 +27,9 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block">
-              <span className="font-serif text-3xl tracking-wider">ZK Zewar</span>
+              <span className="font-serif text-3xl tracking-wider font-bold">ZK Zewar</span>
             </Link>
-            <p className="mt-4 text-background/70 max-w-sm">
+            <p className="mt-4 text-background/70 max-w-sm font-semibold">
               Timeless elegance, crafted for you 
               <br /> Handmade jewelry that celebrates your unique story and most cherished
               moments.
@@ -39,7 +39,7 @@ export function Footer() {
                 href="https://www.instagram.com/zkzewar"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-background/70 hover:text-primary transition-colors"
+                className="text-background/70 hover:text-background transition-colors"
               >
                 <Instagram className="h-5 w-5" />
                 <span className="sr-only">Instagram</span>
@@ -48,7 +48,7 @@ export function Footer() {
                 href="https://www.facebook.com/profile.php?id=61585608028075"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-background/70 hover:text-primary transition-colors"
+                className="text-background/70 hover:text-background transition-colors"
               >
                 <Facebook className="h-5 w-5" />
                 <span className="sr-only">Facebook</span>
@@ -57,7 +57,7 @@ export function Footer() {
                 href="https://wa.me/+923195459398"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-background/70 hover:text-primary transition-colors"
+                className="text-background/70 hover:text-background transition-colors"
               >
                 <MessageCircle className="h-5 w-5" />
                 <span className="sr-only">WhatsApp</span>
@@ -73,7 +73,7 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-background/70 hover:text-primary transition-colors">
+                  <Link href={link.href} className="text-background/70 hover:text-background transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -87,7 +87,7 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               {footerLinks.policies.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-background/70 hover:text-primary transition-colors">
+                  <Link href={link.href} className="text-background/70 hover:text-background transition-colors">
                     {link.name}
                   </Link>
                 </li>

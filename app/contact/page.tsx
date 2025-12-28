@@ -63,13 +63,13 @@ export default function ContactPage() {
       <Header />
 
       {/* Hero */}
-      <section className="pt-14 bg-foreground text-backgroundd">
-        <div className="bg-linear-to-b from-muted to-background py-16 border-b">
+      <section className="pt-14 bg-[#c9a88e] text-white">
+        <div className=" py-16 border-b">
           <div className="mx-auto max-w-4xl px-4 text-center">
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl">
               Get in Touch
             </h1>
-            <p className="mt-4 text-muted-foreground text-lg">
+            <p className="mt-4 text-lg">
               Have a question or want to place a custom order? We’d love to hear from you.
             </p>
           </div>
@@ -82,8 +82,15 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((item) => {
               return (
-                <div key={item.title} className={`rounded-2xl p-6 bg-linear-to-br from-[${item.color}] to-[#ffffff] shadow-md hover:shadow-xl transition-all hover:-translate-y-1`}>
-                  <div className={`w-12 h-12 rounded-full bg-[${item.color}] flex items-center justify-center mb-4`}>
+                <div
+                style={{
+                  background: `linear-gradient(135deg, ${item.color}, #ffffff)`,
+                }}
+                 key={item.title} className={`rounded-2xl p-6 shadow-md hover:shadow-xl transition-all hover:-translate-y-1`}>
+                  <div 
+                    style={{ backgroundColor: item.color }}
+
+                  className={`w-12 h-12 rounded-full  flex items-center justify-center mb-4`}>
                     <item.icon className="h-5 w-5 text-white" />
                   </div>
                   <h3 className="font-medium text-lg text-foreground">
