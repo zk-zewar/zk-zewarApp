@@ -110,7 +110,7 @@ export default function FAQsPage() {
 
       {/* Hero */}
       <section>
-        <div className="relative overflow-hidden bg-[#9b7558] text-background py-20 sm:py-28">
+        <div className="relative overflow-hidden bg-[#9b7558] text-background py-26 sm:py-28">
           <div className="mx-auto max-w-4xl px-4 text-center">
             <span className="uppercase tracking-widest text-sm ">
               Help Center

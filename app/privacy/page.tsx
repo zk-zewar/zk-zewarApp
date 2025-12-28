@@ -8,7 +8,7 @@ export default function PrivacyPage() {
 
       {/* Hero */}
       <section className="pt-10">
-        <div className="relative overflow-hidden bg-gradient-to-b from-[#9b7558] to-[#8a684e] text-background py-20 sm:py-28">
+        <div className="relative overflow-hidden bg-gradient-to-b from-[#9b7558] to-[#8a684e] text-background py-25 sm:py-28">
           <div className="mx-auto max-w-4xl px-4 text-center">
             <span className="uppercase tracking-widest text-sm text-background/80">
               Legal

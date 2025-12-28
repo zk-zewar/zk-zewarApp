@@ -20,79 +20,93 @@ const collections = [
     image: "/images/custom-design.png",
     href: "/custom-orders",
   },
-
 ]
 
 export function FeaturedCollections() {
   return (
-    <section className="py-5 sm:py-5">
-      <div className="mx-auto  px-2 sm:px-4 lg:px-6">
+    <section className="py-10 sm:py-14">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Heading */}
-        <div className="text-center">
-          <h2 className="mt-2 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-foreground">
             Our Collections
           </h2>
         </div>
-        {/* Cards */}
-        <div className="mt-5 mx-auto ">
-          <div
-            className="
-      flex gap-4
-      overflow-x-auto
-      snap-x snap-mandatory
-      scrollbar-hide
-      justify-center
-      px-2
-    "
-          >
-            {collections.map((collection) => (
-              <Link
-                key={collection.name}
-                href={collection.href}
+
+        {/* Collections */}
+        <div
+          className="
+            flex gap-6
+            overflow-x-auto lg:overflow-visible
+            snap-x snap-mandatory
+            scrollbar-hide
+            justify-start lg:justify-center
+            px-1
+          "
+        >
+          {collections.map((collection) => (
+            <Link
+              key={collection.name}
+              href={collection.href}
+              className="
+                group relative
+                flex-shrink-0
+                snap-center
+                rounded-full
+                overflow-hidden
+                bg-muted
+                shadow-sm hover:shadow-lg
+                transition-all duration-300
+
+                w-[65vw] h-[65vw]
+                sm:w-[40vw] sm:h-[40vw]
+                md:w-[30vw] md:h-[30vw]
+                lg:w-[18rem] lg:h-[18rem]
+              "
+            >
+              {/* Image */}
+              <img
+                src={collection.image || "/placeholder.svg"}
+                alt={collection.name}
                 className="
-          group relative
-          h-[24vh] w-[24vh]
-          min-w-[18vh]
-          snap-center
-          overflow-hidden
-          rounded-full
-          bg-muted
-          shadow-sm
-          hover:shadow-lg
-          transition-all
-          duration-300
-        "
-              >
-                {/* Image */}
-                <img
-                  src={collection.image || "/placeholder.svg"}
-                  alt={collection.name}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+                  h-full w-full object-cover
+                  transition-transform duration-700
+                  group-hover:scale-105
+                "
+              />
 
-                {/* Overlay */}
-                <div className="absolute inset-0 rounded-full bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300" />
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors" />
 
-                {/* Text */}
-                <div className="absolute inset-0 flex flex-col items-center justify-end p-4 text-center bg-linear-to-t from-foreground/70 to-transparent">
-                  <h3 className="font-serif text-lg sm:text-xl font-bold text-white">
-                    {collection.name}
-                  </h3>
-                  <p className="text-sm text-white/80 font-medium">
-                    {collection.description}
-                  </p>
+              {/* Text */}
+              <div className="
+                absolute inset-0
+                flex flex-col items-center justify-end
+                p-4 text-center
+                bg-gradient-to-t from-black/70 via-black/20 to-transparent
+              ">
+                <h3 className="font-serif text-lg sm:text-xl text-white">
+                  {collection.name}
+                </h3>
 
-                  <div className="mt-1 flex items-center gap-1 text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span>Explore</span>
-                    <ArrowRight className="h-3 w-3" />
-                  </div>
+                <p className="text-sm text-white/80">
+                  {collection.description}
+                </p>
+
+                <div className="
+                  mt-2 flex items-center gap-1
+                  text-white text-xs
+                  opacity-0 group-hover:opacity-100
+                  transition-opacity
+                ">
+                  <span>Explore</span>
+                  <ArrowRight className="h-3 w-3" />
                 </div>
-              </Link>
-            ))}
-          </div>
+              </div>
+            </Link>
+          ))}
         </div>
-
       </div>
     </section>
   )
