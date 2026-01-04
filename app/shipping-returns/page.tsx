@@ -164,7 +164,7 @@ export default function ShippingReturnsPage() {
       {/* Final CTA */}
       <section className="py-20">
         <div className="mx-auto max-w-4xl px-4">
-          <div className="rounded-lg border border-border bg-gradient-to-br from-muted to-background p-10 text-center">
+          <div className="rounded-lg border border-border bg-linear-to-br from-muted to-background p-10 text-center">
             <h2 className="font-serif text-3xl text-foreground mb-4">
               Need More Help?
             </h2>

@@ -13,7 +13,7 @@ export function HeroSection() {
           alt="ZK Zewar - Timeless Elegance, Crafted for You"
           className="h-full w-full object-contain sm:object-cover object-center sm:object-[center_33%]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/30 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-background/70 via-background/30 to-transparent" />
       </div>
 
       {/* Content */}
@@ -37,7 +37,7 @@ export function HeroSection() {
             size="lg"
             className="w-full sm:w-auto rounded-none px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm uppercase tracking-wider border-[#8b6f5c] text-[#8b6f5c] hover:bg-[#8b6f5c]/10 bg-white/90"
           >
-            <Link href="/custom-orders" className="flex items-center justify-center">Custom Orders</Link>
+            <Link href="/collections/custom-designs" className="flex items-center justify-center">Custom Orders</Link>
           </Button>
 
         </div>

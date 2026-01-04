@@ -41,7 +41,7 @@ export default function AboutPage() {
       <WhyChooseUs />
 
       {/* Values */}
-      <section className="py-20 sm:py-28 bg-gradient-to-b from-muted to-background">
+      <section className="py-20 sm:py-28 bg-linear-to-b from-muted to-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="uppercase tracking-widest text-sm text-muted-foreground">
@@ -98,7 +98,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 sm:py-28 bg-gradient-to-br from-primary/10 to-muted">
+      <section className="py-20 sm:py-28 bg-linear-to-br from-primary/10 to-muted">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-serif text-3xl sm:text-4xl text-foreground">
             Let’s Create Something Beautiful
@@ -116,7 +116,7 @@ export default function AboutPage() {
               Shop Collection
             </a>
             <a
-              href="/custom-orders"
+              href="/collections/custom-designs"
               className="inline-flex items-center justify-center px-10 py-3 border border-foreground text-foreground hover:bg-foreground hover:text-background transition"
             >
               Custom Order

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Menu, ShoppingBag, Search, X } from "lucide-react"
@@ -13,36 +13,61 @@ import { useRouter } from "next/navigation"
 
 const navigation = [
   { name: "Collections", href: "/collections" },
-  { name: "Custom Orders", href: "/custom-orders" },
+  { name: "Custom Orders", href: "/collections/custom-designs" },
 ]
 
-const allProducts = [
-  { id: 201, name: "Custom Name Necklace", price: "Rs. 2,500", category: "Necklaces" },
-  { id: 202, name: "Layered Chain Set", price: "Rs. 3,000", category: "Necklaces" },
-  { id: 203, name: "Pearl Pendant", price: "Rs. 2,200", category: "Necklaces" },
-  { id: 401, name: "Pearl Initial Bracelet", price: "Rs. 1,500", category: "Bracelets" },
-  { id: 402, name: "Chain Link Bracelet", price: "Rs. 1,800", category: "Bracelets" },
-]
+type Product = {
+  id: string
+  name: string
+  slug: string
+  price: number
+  images: string[]
+  main_collection: {
+    name: string
+  } | null
+}
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
+  const [products, setProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState(false)
   const { totalItems, setIsCartOpen } = useCart()
   const router = useRouter()
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true)
+        const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001"
+        const res = await fetch(`${baseUrl}/api/products`)
+        const data = await res.json()
+        if (res.ok && data.products) {
+          setProducts(data.products)
+        }
+      } catch (error) {
+        console.error("Failed to fetch products", error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchProducts()
+  }, [])
+
   const filteredProducts = searchQuery.trim()
-    ? allProducts.filter(
+    ? products.filter(
         (product) =>
           product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          product.category.toLowerCase().includes(searchQuery.toLowerCase()),
+          product.main_collection?.name.toLowerCase().includes(searchQuery.toLowerCase()),
       )
     : []
 
-  const handleProductClick = (productId: number) => {
+  const handleProductClick = (slug: string) => {
     setIsSearchOpen(false)
     setSearchQuery("")
-    router.push(`/collections/${productId}`)
+    router.push(`/products/${slug}`)
   }
 
   return (
@@ -108,7 +133,7 @@ export function Header() {
               className="text-foreground/80 hover:text-primary"
               onClick={() => setIsSearchOpen(true)}
             >
-              <Search className="h-40 w-40" />
+              <Search className="h-5 w-5" />
               <span className="sr-only">Search</span>
             </Button>
             <Button
@@ -117,7 +142,7 @@ export function Header() {
               className="text-foreground/80 hover:text-primary relative"
               onClick={() => setIsCartOpen(true)}
             >
-              <ShoppingBag className="h-40 w-40" />
+              <ShoppingBag className="h-5 w-5" />
               {totalItems > 0 && (
                 <span className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-primary-foreground text-xs flex items-center justify-center rounded-full">
                   {totalItems}
@@ -133,7 +158,7 @@ export function Header() {
         <DialogContent className="sm:max-w-lg p-0 gap-0">
           <DialogTitle className="sr-only">Search Products</DialogTitle>
           <div className="flex items-center border-b border-border px-4">
-            <Search className="h-40 w-40 text-muted-foreground" />
+            <Search className="h-5 w-5 text-muted-foreground" />
             <Input
               placeholder="Search for products..."
               value={searchQuery}
@@ -152,19 +177,37 @@ export function Header() {
               <div className="p-6 text-center text-muted-foreground">
                 <p>Start typing to search for jewelry...</p>
               </div>
+            ) : loading ? (
+              <div className="p-6 text-center text-muted-foreground">
+                <p>Loading products...</p>
+              </div>
             ) : filteredProducts.length > 0 ? (
               <div className="py-2">
-                {filteredProducts.map((product) => (
+                {filteredProducts.slice(0, 10).map((product) => (
                   <button
                     key={product.id}
-                    onClick={() => handleProductClick(product.id)}
-                    className="w-full px-4 py-3 flex items-center justify-between hover:bg-muted transition-colors text-left"
+                    onClick={() => handleProductClick(product.slug)}
+                    className="w-full px-4 py-3 flex items-center gap-3 hover:bg-muted transition-colors text-left"
                   >
-                    <div>
-                      <p className="font-medium text-foreground">{product.name}</p>
-                      <p className="text-sm text-muted-foreground">{product.category}</p>
+                    {product.images && product.images[0] && (
+                      <div className="relative w-12 h-12 shrink-0 bg-muted rounded overflow-hidden">
+                        <Image
+                          src={product.images[0]}
+                          alt={product.name}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-foreground truncate">{product.name}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {product.main_collection?.name || "Uncategorized"}
+                      </p>
                     </div>
-                    <p className="text-sm font-medium text-primary">{product.price}</p>
+                    <p className="text-sm font-medium text-primary whitespace-nowrap">
+                      PKR {product.price.toLocaleString()}
+                    </p>
                   </button>
                 ))}
               </div>

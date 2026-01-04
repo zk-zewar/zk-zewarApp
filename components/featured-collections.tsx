@@ -19,7 +19,7 @@ export function FeaturedCollections() {
   useEffect(() => {
     const fetchCollections = async () => {
       try {
-        const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+        const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3001'
 
         const res = await fetch(`${baseUrl}/api/collections`)
 
@@ -72,7 +72,7 @@ export function FeaturedCollections() {
           {collections.map((collection) => (
             <Link
               key={collection.id}
-              href={`/collections/${collection.slug ?? collection.name.toLowerCase().replace(/ /g, '-')}`}
+              href={collection.name === 'Custom Designs' ?'/collections/custom-designs':`/collections/${collection.name.toLowerCase().replace(/ /g, '-')}`}
               className="
                 group relative
                 shrink-0

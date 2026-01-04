@@ -10,17 +10,18 @@ type Product = {
   id: string
   name: string
   price: number
-  image: string
+  images: string[]
+  slug: string
 }
-
 export default async function CategoryPage({
   params,
 }: {
-  params: { name: string }
+  params: Promise<{ name: string }>
 }) {
+  const { name } = await params
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL|| 'http://localhost:3000'}/api/collections/products/${params.name}`,
+    `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001"}/api/collections/products/${name}`,
     { cache: "no-store" }
   )
 
@@ -36,7 +37,7 @@ export default async function CategoryPage({
     <main className="min-h-screen bg-background">
       <Header />
       <div>
-        COLLECTION: {params.name}
+      COLLECTION: {name}
       </div>
       {/* Hero */}
       <section className="pt-15 bg-[#9b7558] text-background py-10 text-center">
@@ -53,12 +54,12 @@ export default async function CategoryPage({
             {products.map((product: Product) => (
               <Link
                 key={product.id}
-                href={`/products/${product.name}`}
+                href={`/products/${product.slug}`}
                 className="group"
               >
-                <div className="relative aspect-square overflow-hidden rounded-xl shadow-md">
+                <div className="relative aspect-square overflow-hidden rounded-xl shadow-md bg-muted">
                   <Image
-                    src={product.image}
+                    src={product.images && product.images[0] ? product.images[0] : "/placeholder.svg"}
                     alt={product.name}
                     fill
                     className="object-cover group-hover:scale-105 transition"
@@ -99,7 +100,7 @@ export default async function CategoryPage({
 
           <div className="flex justify-center gap-4">
             <Button asChild>
-              <Link href="/custom-orders">Request Custom Order</Link>
+              <Link href="/collections/custom-designs">Request Custom Order</Link>
             </Button>
             <Button variant="outline" asChild>
               <Link href="/collections">
