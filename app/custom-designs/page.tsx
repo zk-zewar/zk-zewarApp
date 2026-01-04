@@ -219,7 +219,7 @@ export default function CustomOrdersPage() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full rounded-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/80 hover:to-primary transition-all text-white"
+                  className="w-full rounded-lg bg-linear-to-r from-primary to-primary/80 hover:from-primary/80 hover:to-primary transition-all text-white"
                 >
                   Submit Request
                 </Button>
@@ -228,7 +228,7 @@ export default function CustomOrdersPage() {
 
             {/* Side Content */}
             <div className="space-y-8">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
+              <div className="relative aspect-4/3 overflow-hidden rounded-2xl shadow-lg">
                 <img
                   src="/images/custom-design.png"
                   alt="Custom jewelry crafting"
@@ -240,7 +240,7 @@ export default function CustomOrdersPage() {
                 <p className="text-muted-foreground mb-4">
                   Send us a message on WhatsApp and we'll help you design your perfect piece.
                 </p>
-                <Button asChild className="rounded-lg bg-gradient-to-r from-[#25D366] to-[#1ebe57] hover:from-[#1ebe57] hover:to-[#25D366] text-white transition-all">
+                <Button asChild className="rounded-lg bg-linear-to-r from-[#25D366] to-[#1ebe57] hover:from-[#1ebe57] hover:to-[#25D366] text-white transition-all">
                   <a href="https://wa.me/+923195459398" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                     <MessageCircle className="h-5 w-5" />
                     Chat on WhatsApp

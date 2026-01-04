@@ -1,29 +1,8 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import Image from "next/image"
-import Link from "next/link"
 import { FeaturedCollections } from "@/components/featured-collections"
 
-const collections = [
-  {
-    name: "Necklaces",
-    description: "Timeless pieces that tell your story",
-    image: "/images/necklace.png",
-    href: "/collections/necklaces",
-  },
-  {
-    name: "Bracelets",
-    description: "Handcrafted with love and care",
-    image: "/images/bracelet.png",
-    href: "/collections/bracelets",
-  },
-  {
-    name: "Custom Orders",
-    description: "Design your dream piece",
-    image: "/images/custom-design.png",
-    href: "/custom-orders",
-  },
-]
+
 
 export default function CollectionsPage() {
   return (
