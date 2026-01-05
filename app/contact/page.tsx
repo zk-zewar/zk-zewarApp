@@ -49,13 +49,51 @@ export default function ContactPage() {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const message = `Hi! I'm ${formData.name}.\n\nSubject: ${formData.subject}\n\n${formData.message}\n\nEmail: ${formData.email}`
-    window.open(
-      `https://wa.me/+923195459398?text=${encodeURIComponent(message)}`,
-      "_blank"
-    )
+    
+    try {
+      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001"
+      
+      const response = await fetch(`${baseUrl}/api/messages`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          sender_name: formData.name,
+          sender_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message")
+      }
+
+      // Also open WhatsApp (optional - can remove if you only want API)
+      const message = `Hi! I'm ${formData.name}.\n\nSubject: ${formData.subject}\n\n${formData.message}\n\nEmail: ${formData.email}`
+      window.open(
+        `https://wa.me/+923195459398?text=${encodeURIComponent(message)}`,
+        "_blank"
+      )
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      })
+
+      alert("Message sent successfully!")
+    } catch (error) {
+      console.error("Error sending message:", error)
+      alert("Failed to send message. Please try again.")
+    }
   }
 
   return (

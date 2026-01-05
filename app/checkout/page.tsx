@@ -17,6 +17,7 @@ import Link from "next/link"
 export default function CheckoutPage() {
   const { items, totalPrice, clearCart } = useCart()
   const [step, setStep] = useState<"details" | "success">("details")
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -34,11 +35,60 @@ export default function CheckoutPage() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In production, this would send to a backend
-    setStep("success")
-    clearCart()
+    
+    if (loading) return
+    
+    setLoading(true)
+    
+    try {
+      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001"
+      
+      const orderData = {
+        customer_name: formData.fullName,
+        customer_email: formData.email,
+        customer_phone: formData.phone,
+        shipping_address: {
+          address: formData.address,
+          city: formData.city,
+          postalCode: formData.postalCode,
+        },
+        items: items.map(item => ({
+          id: item.id,
+          name: item.name,
+          price: item.priceNumber,
+          quantity: item.quantity,
+          image: item.image,
+          category: item.category,
+        })),
+        total_amount: grandTotal,
+        shipping_cost: shippingCost,
+        notes: formData.notes,
+      }
+
+      const response = await fetch(`${baseUrl}/api/orders`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to place order")
+      }
+
+      setStep("success")
+      clearCart()
+    } catch (error) {
+      console.error("Error placing order:", error)
+      alert("Failed to place order. Please try again.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   if (items.length === 0 && step !== "success") {
@@ -215,8 +265,8 @@ export default function CheckoutPage() {
                   </div>
                 </div>
 
-                <Button type="submit" size="lg" className="w-full rounded-none">
-                  Place Order - Rs. {grandTotal.toLocaleString()}
+                <Button type="submit" size="lg" className="w-full rounded-none" disabled={loading}>
+                  {loading ? "Placing Order..." : `Place Order - Rs. ${grandTotal.toLocaleString()}`}
                 </Button>
               </form>
             </div>
@@ -229,7 +279,7 @@ export default function CheckoutPage() {
                 <div className="space-y-4 mb-6">
                   {items.map((item) => (
                     <div key={item.id} className="flex gap-4">
-                      <div className="relative w-16 h-16 bg-muted flex-shrink-0">
+                      <div className="relative w-16 h-16 bg-muted shrink-0">
                         <Image src={item.image || "/placeholder.svg"} alt={item.name} fill className="object-cover" />
                         <span className="absolute -top-2 -right-2 w-5 h-5 bg-primary text-primary-foreground text-xs flex items-center justify-center rounded-full">
                           {item.quantity}
